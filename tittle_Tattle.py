@@ -9,7 +9,7 @@ from threading import Timer
 TOKEN = 'NTMwNzEzNzM0NDY1ODQ3MzI3.Dx7sdw.EVibNa0-zQxxzzZPKXhglBg1jPg'
 
 bot = discord.Client()
-client = commands.Bot(command_prefix = '!')
+client = commands.Bot(command_prefix = '$')
 
 global user_ID
 global channel_New
@@ -29,7 +29,7 @@ async def on_message(message):
     global channel_New
     global user_ID
 
-    if message.content.upper().startswith('!CREATE'):
+    if message.content.upper().startswith('$CREATE'):
 
         channel = message.channel
         server = message.server
@@ -57,13 +57,13 @@ async def on_message(message):
         except IndexError as error:
                     await client.send_message(channel, 'Who do you wanna gossip about?')
 
-    if message.content.upper().startswith('!DELETE'):
+    if message.content.upper().startswith('$DELETE'):
         print(channel_New)
         await client.delete_channel(channel_New)
         await client.send_message(message.channel, 'The tittling on '+ user_ID.mention + " has stopped.")
         channel_New  = None
         user_ID = None
-    if message.content.upper().startswith('!TEST'):
+    if message.content.upper().startswith('$TEST'):
         print(channel_New)
         print(user_ID)
     #check to see if a message was heard
